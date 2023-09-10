@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { TouchableOpacity, Image } from 'react-native';
 import { Home } from './components/home';
 import { About } from './components/about';
+import { Login } from './components/login';
+import Registration from './components/registration';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import logo from './assets/logo.png';
@@ -46,6 +48,10 @@ export default function App() {
     content = <Home handleNavigation={handleNavigation} location={location} setSearchedLocation={setSearchedLocation} />
   } else if (page === 'about') {
     content = <About />
+  } else if (page === 'login') {
+    content = <Login onLogin={handleLogin} />
+  } else if (page === 'registration') {
+    content = <Registration />
   }
 
   return (
@@ -78,7 +84,7 @@ export default function App() {
             </TouchableOpacity> */}
             <TouchableOpacity onPress={() => handleNavigation('user')}>
               <View style={styles.userButton}>
-                <Image source={userIcon} style={styles.userIcon} />
+                {/* <Image source={userIcon} style={styles.userIcon} /> */}
                 <Text style={styles.navLink}>{currentUser}</Text>
               </View>
             </TouchableOpacity>
